@@ -1,6 +1,7 @@
 import express from "express";
 import connectDB from "./database-connection/db.connect.js";
-import { connect } from "mongoose";
+import userRoutes from "./user/user.controller.js";
+import productRoutes from "./product/product.controller.js";
 
 const app = express();
 
@@ -13,6 +14,8 @@ app.use(express.json());
 await connectDB();
 
 //register routes
+app.use(userRoutes);
+app.use(productRoutes);
 
 // TODO : handle global error
 
